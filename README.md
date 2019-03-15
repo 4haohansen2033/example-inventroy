@@ -26,3 +26,14 @@
 
 - jenks
 - docker
+
+##first step
+
+安装依赖包：
+
+```javascript
+npm i vue vue-router vuex element-ui -S
+npm i typescript tslient webpack -D
+```
+
+配置项目的 typescrip、tslint 配置文件
