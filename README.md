@@ -34,6 +34,8 @@
 ```javascript
 npm i vue vue-router vuex element-ui -S
 npm i typescript tslient webpack -D
+// vue-class-component是官方维护的TypeScript装饰器
+npm i vue-class-component
 ```
 
 配置项目的 typescrip、tslint 配置文件
