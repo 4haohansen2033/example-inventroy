@@ -1,5 +1,7 @@
 <template>
-  <div class="app-container"></div>
+  <div class="app-container">
+    <router-view></router-view>
+  </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
@@ -17,7 +19,7 @@ export default class App extends Vue {
 .app-container {
   width: 100%;
   height: 100%;
-  background-color: gray;
+  background-color: #424250;
 }
 </style>
 

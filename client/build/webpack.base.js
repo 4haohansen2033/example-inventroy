@@ -5,20 +5,62 @@ const resolve = dir => {
 };
 
 module.exports = {
-  entry: resolve("./src/main.ts"),
+  entry: {
+    main: path.join(__dirname, "../src/main.ts")
+  },
+  // entry: resolve("src/main.ts"),
   output: {
-    fileName: "[name].[hash:10].js",
+    filename: "[name].[hash:10].js",
     path: resolve("dist")
   },
   resolve: {
-    module: ["node_modules"],
-    extends: ["ts", "js", "json"]
+    modules: ["node_modules", resolve("src")],
+    extensions: [".ts", ".js", ".json", ".vue"],
+    alias: {
+      vue$: "vue/dist/vue.esm.js"
+    }
   },
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        loader: "typescript-loader"
+        test: /\.vue$/,
+        loader: "vue-loader"
+      },
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        exclude: "/node_modules/",
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
+      },
+      {
+        test: /\.js/,
+        loader: "babel-loader",
+        include: [resolve("src")]
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.less/,
+        use: ["style-loader", "css-loader", "less-loader"]
+      },
+      {
+        test: /\.(png|jpg|jpeg|svg)/,
+        loader: "file-loader",
+        options: {
+          limit: 50000,
+          outputPath: "image"
+        }
+      },
+      {
+        test: /.(ttf|woff2?|eot|otf)(\?.*)?$/,
+        loader: "url-loader",
+        options: {
+          limit: 8192
+        }
       }
     ]
   }

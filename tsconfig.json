@@ -7,8 +7,8 @@
     "module": "esnext",
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "lib": ["es2015", "dom", "es2015.promise"]
+    "lib": ["dom", "es2015", "es2015.promise"],
+    "moduleResolution": "node"
   },
   "include": ["client/src/**/*"],
   "exclude": ["node_modules"]
